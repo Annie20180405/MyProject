@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reverse Poem</title>
+
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Poem</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="Poem">Poem:</label>
+                    <textarea class="form-control" rows="5" id="Poem" style="height:auto;min-width: 100%;max-width: 100%">Today was the absolute worst day ever
+And don't try to convince me that
+There's something good in every day
+Because, when you take a closer look,
+This world is a pretty evil place.
+Even if
+Some goodness does shine through once in a while
+Satisfaction and happiness don't last.
+And it's not true that
+It's all in the mind and heart
+Because
+True happiness can be attained
+Only if one's surroundings are good
+It's not true that good exists
+I'm sure you can agree that
+The reality
+Creates
+My attitude
+It's all beyond my control
+And you'll never in a million years hear me say
+Today was a very good day</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-6">
+            <button id="btnFilter" type="button" class="btn btn-danger" style="margin-bottom: 20px;width: 100%;">Exhibit</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">Reverse Poem</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="ReversePoem">Reverse Poem:</label>
+                        <textarea class="form-control" readonly rows="5" id="ReversePoem" style="height:auto;min-width: 100%;max-width: 100%;background-color: white;"></textarea>
+                    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        $("textarea").css("min-height","440px");
+        $("#btnFilter").click(function(){
+            var lines = $('#Poem').val().split(/\n/);
+            var texts = [];
+            for (var i=0; i < lines.length; i++) {
+                if (/\S/.test(lines[i])) {
+                    texts.push($.trim(lines[i]));
+                }
+            }
+            $('#ReversePoem').val("");
+            for (var j=lines.length-1; j >= 0; j--) {
+                $('#ReversePoem').val($('#ReversePoem').val()+lines[j]+"\n");
+            }
+            $("textarea").css("min-height",lines.length*22+"px").height(lines.length*22);
+        });
+    });
+</script>
