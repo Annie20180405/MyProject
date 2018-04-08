@@ -1,0 +1,66 @@
+<!DOCTYPE html><html>  
+<head>  
+    <meta charset="utf-8" />  
+    <title>My React Trial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>  
+</head>  
+<body>  
+<div id="content"></div>  
+<script type="text/babel">  
+    class Reversal extends React.Component{
+constructor(props) {
+    super(props);
+    this.state={
+    data:["Today was the absolute worst day ever",
+        "And don't try to convince me that",
+        "There's something good in every day",
+        "Because, when you take a closer look",
+        "This world is a pretty evil place.",
+        "Even if",
+        "Some goodness does shine through once in a while",
+        "Satisfaction and happiness don't last.",
+        "And it's not true that",
+        "It's all in the mind and heart",
+        "Because",
+        "True happiness can be attained",
+        "Only if one's surroundings are good",
+        "It's not true that good exists",
+        "I'm sure you can agree that",
+        "The reality",
+        "Creates",
+        "My attitude",
+        "It's all beyond my control",
+        "And you'll never in a million years hear me say",
+        "Today was a very good day"]
+}
+  }
+        render(){   
+        const {data} =this.state
+            return ( < div style={{width:'100%',textAlign:'left'}}>
+      <div>{
+          data.map((item, index) => {
+          return <p key={index}>{item}</p>
+        })
+      }</div>
+
+      <div style={{color:'#0f0'}} onClick={e=>{
+        let result=data.reverse()  
+        this.setState({data:result})      
+      }}>Reverse</div>
+    </div > )  
+        }  
+    }
+  
+    React.render( <Reversal/>,
+        document.getElementById('app'),  
+        function(){  
+            console.log('Finished！！');
+        }  
+    )  
+</script>  
+<div id="app"></div>  
+  
+</body>  
+</html>  
